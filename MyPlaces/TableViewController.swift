@@ -31,10 +31,11 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CustomCell
 
-        cell.textLabel?.text = namesArray[indexPath.row]
-        cell.imageView?.image = UIImage(named: namesArray[indexPath.row])
+        cell.placeName?.text = namesArray[indexPath.row]
+        cell.placeImage?.image = UIImage(named: namesArray[indexPath.row])
+        cell.placeImage.layer.cornerRadius = cell.placeImage.frame.height / 2
 
         return cell
     }
