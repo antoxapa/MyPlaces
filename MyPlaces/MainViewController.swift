@@ -18,25 +18,54 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let cellID = "Cell"
     
     //  Same as Array in Realm
-    var places: Results<Place>!
-    var ascendingSorting = true
+    private var places: Results<Place>!
+    private var ascendingSorting = true
+    private var filteredPlaces: Results<Place>!
+    
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         places = realm.objects(Place.self)
+        
+        //Setup the search controller
+        searchController.searchResultsUpdater = self
+        searchController.isActive = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredPlaces.count
+        }
         return places.isEmpty ? 0 : places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CustomCell
         
-        let place = places[indexPath.row]
+        var place = Place()
+        
+        if isFiltering {
+            place = filteredPlaces[indexPath.row]
+        } else {
+            place = places[indexPath.row]
+        }
         
         cell.placeName.text = place.name
         cell.placeType.text = place.type
@@ -65,7 +94,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = placesTableView.indexPathForSelectedRow else { return }
-            let place = places[indexPath.row]
+            let place: Place
+            if isFiltering {
+                place = filteredPlaces[indexPath.row]
+            } else {
+                place = places[indexPath.row]
+            }
             let dvc = segue.destination as! AddPlaceTableViewController
             dvc.currentPlace = place
         }
@@ -98,5 +132,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         placesTableView.reloadData()
     }
+    
+}
+
+extension MainViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@ OR type CONTAINS[c] %@", searchText, searchText, searchText)
+        placesTableView.reloadData()
+    }
+    
     
 }
