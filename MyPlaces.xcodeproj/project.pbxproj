@@ -13,7 +13,7 @@
 		0655E45823C1BE1400CC5F42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0655E45623C1BE1400CC5F42 /* Main.storyboard */; };
 		0655E45A23C1BE1500CC5F42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0655E45923C1BE1500CC5F42 /* Assets.xcassets */; };
 		0655E45D23C1BE1500CC5F42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0655E45B23C1BE1500CC5F42 /* LaunchScreen.storyboard */; };
-		0655E46523C1BE4F00CC5F42 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0655E46423C1BE4F00CC5F42 /* TableViewController.swift */; };
+		0655E46523C1BE4F00CC5F42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0655E46423C1BE4F00CC5F42 /* MainViewController.swift */; };
 		0655E46723C1DB1400CC5F42 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0655E46623C1DB1400CC5F42 /* CustomCell.swift */; };
 		0655E46923C1E89E00CC5F42 /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0655E46823C1E89E00CC5F42 /* PlacesModel.swift */; };
 		0655E46B23C1F98100CC5F42 /* AddPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0655E46A23C1F98100CC5F42 /* AddPlaceTableViewController.swift */; };
@@ -29,7 +29,7 @@
 		0655E45923C1BE1500CC5F42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0655E45C23C1BE1500CC5F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0655E45E23C1BE1500CC5F42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0655E46423C1BE4F00CC5F42 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		0655E46423C1BE4F00CC5F42 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0655E46623C1DB1400CC5F42 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		0655E46823C1E89E00CC5F42 /* PlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModel.swift; sourceTree = "<group>"; };
 		0655E46A23C1F98100CC5F42 /* AddPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceTableViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 				0655E45223C1BE1400CC5F42 /* SceneDelegate.swift */,
 				0655E45623C1BE1400CC5F42 /* Main.storyboard */,
 				0655E46A23C1F98100CC5F42 /* AddPlaceTableViewController.swift */,
-				0655E46423C1BE4F00CC5F42 /* TableViewController.swift */,
+				0655E46423C1BE4F00CC5F42 /* MainViewController.swift */,
 				0655E46823C1E89E00CC5F42 /* PlacesModel.swift */,
 				06426FF823C31675009EDFBD /* StorageManager.swift */,
 				0655E46623C1DB1400CC5F42 /* CustomCell.swift */,
@@ -219,7 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0655E45123C1BE1400CC5F42 /* AppDelegate.swift in Sources */,
-				0655E46523C1BE4F00CC5F42 /* TableViewController.swift in Sources */,
+				0655E46523C1BE4F00CC5F42 /* MainViewController.swift in Sources */,
 				0655E46723C1DB1400CC5F42 /* CustomCell.swift in Sources */,
 				06426FF923C31675009EDFBD /* StorageManager.swift in Sources */,
 				0655E45323C1BE1400CC5F42 /* SceneDelegate.swift in Sources */,
