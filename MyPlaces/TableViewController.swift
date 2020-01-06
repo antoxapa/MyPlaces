@@ -42,12 +42,34 @@ class TableViewController: UITableViewController {
 
         return cell
     }
-//
-//    // MARK: - Navigation
-//
+    // MARK: - TableViewDelegate
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let place = places[indexPath.row]
+        let contextItem = UIContextualAction(style: .destructive, title: "Delete") { (_, _ ,_)  in
+            
+            StorageManager.deleteIbject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        return swipeActions
+    }
+    
+
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let place = places[indexPath.row]
+            let dvc = segue.destination as! AddPlaceTableViewController
+            dvc.currentPlace = place
+        }
+    }
+    
+    
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         guard let svc = segue.source as? AddPlaceTableViewController else { return }
-        svc.saveNewPlace()
+        svc.savePlace()
         tableView.reloadData()
     }
 }

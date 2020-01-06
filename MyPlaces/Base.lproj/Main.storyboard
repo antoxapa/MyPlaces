@@ -67,6 +67,7 @@
                                     <outlet property="placeLocation" destination="gUq-y5-orB" id="4eM-Yj-ZFh"/>
                                     <outlet property="placeName" destination="bSi-iG-ixx" id="IrN-zi-SW8"/>
                                     <outlet property="placeType" destination="rpm-72-N8D" id="veI-z7-YCD"/>
+                                    <segue destination="Thn-MD-or6" kind="show" identifier="showDetail" id="kGt-hq-NW9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,7 +76,7 @@
                             <outlet property="delegate" destination="vMf-f6-rz4" id="e2U-8g-yOR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Places" id="7uc-VD-etV">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="7uc-VD-etV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NLz-PS-fgp">
                             <connections>
                                 <segue destination="AzM-Ic-GM7" kind="presentation" id="Y3Z-OE-zHH"/>
@@ -87,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="698.55072463768124" y="-250.44642857142856"/>
         </scene>
-        <!--Add Place Table View Controller-->
+        <!--NewPlace-->
         <scene sceneID="oxj-wE-b9j">
             <objects>
                 <tableViewController id="Thn-MD-or6" customClass="AddPlaceTableViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
@@ -232,7 +233,7 @@
                             <outlet property="delegate" destination="Thn-MD-or6" id="t4F-ge-1sZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="zkm-LH-hEW">
+                    <navigationItem key="navigationItem" title="NewPlace" largeTitleDisplayMode="always" id="zkm-LH-hEW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8kR-KK-3yt">
                             <connections>
                                 <action selector="cancelAction:" destination="Thn-MD-or6" id="o7y-dX-dNw"/>
@@ -255,15 +256,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aS2-mp-Zkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cri-Gh-BFs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2407.2463768115945" y="-250.44642857142856"/>
+            <point key="canvasLocation" x="1472" y="-250"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PMN-dl-oPW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hdK-rQ-eVK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Le2-EA-9E9">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Le2-EA-9E9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -291,10 +292,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ll-dg-iKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="-250"/>
+            <point key="canvasLocation" x="1472" y="-1011"/>
         </scene>
     </scenes>
     <resources>
         <image name="Photo" width="195" height="196"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KeJ-JI-Jqu"/>
+    </inferredMetricsTieBreakers>
 </document>
