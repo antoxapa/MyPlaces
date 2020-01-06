@@ -6,24 +6,29 @@
 //  Copyright © 2020 TonyPo Production. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct Place {
-    var name: String
-    var location: String?
-    var type: String?
-    var restaurantImage: String?
-    var image: UIImage?
+class Place: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var location: String?
+    @objc dynamic var type: String?
+    @objc dynamic var imageData: Data?
     
-    
-    static let namesArray = ["Shaurma", "GrillFood", "Rublevskiy", "Kafe Garage", "Gippo", "Green", "BurgerKing"]
+
+    let placesArray = ["Shaurma", "GrillFood", "Rublevskiy", "Kafe Garage", "Gippo", "Green", "BurgerKing"]
     
    
-    static func getPlaces () -> [Place] {
-        var places = [Place]()
-        for name in namesArray {
-            places.append(Place(name: name, location: "Minsk", type: "Restaurant", restaurantImage: name, image: nil))
+    func savePlacesToDB() {
+        for place in placesArray {
+            guard let image = UIImage(named: place)?.pngData() else { return }
+            let newPlace = Place()
+            newPlace.name = place
+            newPlace.location = "Minsk"
+            newPlace.type = "Restaurant"
+            newPlace.imageData = image
+            StorageManager.saveObject(newPlace)
         }
-        return places
     }
 }
+
+

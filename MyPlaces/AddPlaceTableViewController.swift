@@ -16,11 +16,15 @@ class AddPlaceTableViewController: UITableViewController {
     @IBOutlet weak var placeLocation: UITextField!
     @IBOutlet weak var placeType: UITextField!
     
-    var newPlace: Place?
+    var newPlace = Place()
     var imageIsChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.newPlace.savePlacesToDB()
+        }
+        
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
         
@@ -67,7 +71,7 @@ class AddPlaceTableViewController: UITableViewController {
         } else {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
-        newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, restaurantImage: nil, image: image)
+//        newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, restaurantImage: nil, image: image)
     }
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
