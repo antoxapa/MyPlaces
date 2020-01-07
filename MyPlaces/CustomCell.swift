@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Cosmos
 
 class CustomCell: UITableViewCell {
 
-    @IBOutlet weak var placeImage: UIImageView!
+    @IBOutlet weak var placeImage: UIImageView! {
+        didSet {
+            placeImage.layer.cornerRadius = placeImage.frame.height / 2
+            placeImage.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var placeName: UILabel!
     @IBOutlet weak var placeLocation: UILabel!
     @IBOutlet weak var placeType: UILabel!
+    @IBOutlet weak var cosmosRating: CosmosView! {
+        didSet {
+            cosmosRating.settings.updateOnTouch = false 
+        }
+    }
     
     override func awakeFromNib() {
           super.awakeFromNib()

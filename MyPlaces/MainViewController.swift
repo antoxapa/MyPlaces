@@ -71,13 +71,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.placeType.text = place.type
         cell.placeLocation.text = place.location
         cell.placeImage.image = UIImage(data: place.imageData!)
-        
-        cell.placeImage.layer.cornerRadius = cell.placeImage.frame.height / 2
+        cell.cosmosRating.rating = place.rating
         
         return cell
     }
     
     // MARK: - TableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        placesTableView.deselectRow(at: indexPath, animated: true)
+    }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let place = places[indexPath.row]
         let contextItem = UIContextualAction(style: .destructive, title: "Delete") { (_, _ ,_)  in

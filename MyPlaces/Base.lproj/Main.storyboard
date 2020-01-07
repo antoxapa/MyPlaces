@@ -34,39 +34,56 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aCx-tC-BG8">
-                                                    <rect key="frame" x="100" y="10" width="294" height="65"/>
+                                                    <rect key="frame" x="100" y="10" width="204" height="65"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGw-EV-aIO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="294" height="16.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="204" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxd-hm-k2S">
-                                                            <rect key="frame" x="0.0" y="24.5" width="294" height="16"/>
+                                                            <rect key="frame" x="0.0" y="24.5" width="204" height="16"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRX-c1-jbp">
-                                                            <rect key="frame" x="0.0" y="48.5" width="294" height="16.5"/>
+                                                            <rect key="frame" x="0.0" y="48.5" width="204" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5t-wR-JPj" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="304" y="35" width="95" height="15"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="95" id="p9A-Wk-v0g"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="filledStar"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="emptyStar"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="aCx-tC-BG8" secondAttribute="trailing" constant="20" id="GEc-IJ-lK2"/>
+                                                <constraint firstAttribute="trailing" secondItem="S5t-wR-JPj" secondAttribute="trailing" constant="15" id="7fB-GX-vxY"/>
                                                 <constraint firstItem="Vuq-AV-tjt" firstAttribute="centerY" secondItem="1LO-1e-5VW" secondAttribute="centerY" id="Kd6-DQ-oKS"/>
+                                                <constraint firstItem="S5t-wR-JPj" firstAttribute="leading" secondItem="aCx-tC-BG8" secondAttribute="trailing" id="Kfu-E2-3H9"/>
                                                 <constraint firstItem="aCx-tC-BG8" firstAttribute="top" secondItem="1LO-1e-5VW" secondAttribute="top" constant="10" id="eGX-Sj-Kq6"/>
+                                                <constraint firstItem="S5t-wR-JPj" firstAttribute="centerY" secondItem="1LO-1e-5VW" secondAttribute="centerY" id="iZ0-7O-iNw"/>
                                                 <constraint firstItem="Vuq-AV-tjt" firstAttribute="leading" secondItem="1LO-1e-5VW" secondAttribute="leading" constant="15" id="lGl-6L-FNZ"/>
                                                 <constraint firstItem="aCx-tC-BG8" firstAttribute="leading" secondItem="Vuq-AV-tjt" secondAttribute="trailing" constant="20" id="qZq-zQ-DBh"/>
                                                 <constraint firstAttribute="bottom" secondItem="aCx-tC-BG8" secondAttribute="bottom" constant="10" id="yeO-Jh-JEJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cosmosRating" destination="S5t-wR-JPj" id="tuG-b0-3PK"/>
                                             <outlet property="placeImage" destination="Vuq-AV-tjt" id="d6E-Hx-OWf"/>
                                             <outlet property="placeLocation" destination="zxd-hm-k2S" id="7ta-bx-7ry"/>
                                             <outlet property="placeName" destination="QGw-EV-aIO" id="zbL-PZ-AB6"/>
@@ -123,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvV-FW-T3n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="471" y="-250"/>
+            <point key="canvasLocation" x="469.56521739130437" y="-250.44642857142856"/>
         </scene>
         <!--NewPlace-->
         <scene sceneID="oxj-wE-b9j">
@@ -145,7 +162,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="bLH-n1-4nK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="300.00000000000006"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
@@ -262,6 +279,31 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="l4T-ZJ-xAf">
+                                        <rect key="frame" x="0.0" y="583" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l4T-ZJ-xAf" id="MRN-eV-2qv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jks-Ww-81t" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="starSize">
+                                                            <size key="value" width="44" height="44"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jks-Ww-81t" firstAttribute="centerY" secondItem="MRN-eV-2qv" secondAttribute="centerY" id="JDQ-6c-eBP"/>
+                                                <constraint firstItem="Jks-Ww-81t" firstAttribute="centerX" secondItem="MRN-eV-2qv" secondAttribute="centerX" id="RHs-hF-eWJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -287,13 +329,14 @@
                         <outlet property="placeLocation" destination="iZo-qx-qn1" id="ECS-bX-d17"/>
                         <outlet property="placeName" destination="1JW-Nw-IE8" id="IVe-J2-rS8"/>
                         <outlet property="placeType" destination="9Ja-p0-Rc3" id="50J-ut-fhl"/>
+                        <outlet property="ratingControl" destination="Jks-Ww-81t" id="ZkH-hL-gRS"/>
                         <outlet property="saveButton" destination="xOr-0K-bCK" id="V96-Lw-FcJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aS2-mp-Zkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cri-Gh-BFs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="-250"/>
+            <point key="canvasLocation" x="1289.8550724637682" y="-250.44642857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z4m-OR-toa">
@@ -335,6 +378,8 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
+        <image name="emptyStar" width="255" height="256"/>
+        <image name="filledStar" width="237.5" height="238"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="t0t-f0-dx7"/>
