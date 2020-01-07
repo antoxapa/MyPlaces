@@ -58,7 +58,7 @@
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5t-wR-JPj" customClass="CosmosView" customModule="Cosmos">
                                                     <rect key="frame" x="304" y="35" width="95" height="15"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="95" id="p9A-Wk-v0g"/>
                                                     </constraints>
@@ -147,7 +147,7 @@
             <objects>
                 <tableViewController id="Thn-MD-or6" customClass="AddPlaceTableViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pbd-0t-wOA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
@@ -162,15 +162,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="bLH-n1-4nK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="300.00000000000006"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-EQ-NUq">
+                                                    <rect key="frame" x="344" y="239" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="VB7-0j-k3b"/>
+                                                        <constraint firstAttribute="width" constant="50" id="rWa-kO-yQz"/>
+                                                    </constraints>
+                                                    <state key="normal" image="map"/>
+                                                    <connections>
+                                                        <segue destination="4Ry-4s-2xD" kind="presentation" identifier="showMap" id="u5D-Vj-e84"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="bLH-n1-4nK" secondAttribute="trailing" id="1fo-W3-AoX"/>
                                                 <constraint firstItem="bLH-n1-4nK" firstAttribute="top" secondItem="NWk-gh-Yh5" secondAttribute="top" id="2T5-hr-tBf"/>
+                                                <constraint firstItem="hMU-EQ-NUq" firstAttribute="trailing" secondItem="NWk-gh-Yh5" secondAttribute="trailingMargin" id="GdN-aa-DIv"/>
                                                 <constraint firstAttribute="bottom" secondItem="bLH-n1-4nK" secondAttribute="bottom" id="lR9-ba-xUN"/>
                                                 <constraint firstItem="bLH-n1-4nK" firstAttribute="leading" secondItem="NWk-gh-Yh5" secondAttribute="leading" id="r6n-Bs-9iJ"/>
+                                                <constraint firstItem="hMU-EQ-NUq" firstAttribute="bottom" secondItem="NWk-gh-Yh5" secondAttribute="bottomMargin" id="vTR-d3-lUo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -338,6 +351,48 @@
             </objects>
             <point key="canvasLocation" x="1289.8550724637682" y="-250.44642857142856"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="rM2-iv-hkS">
+            <objects>
+                <viewController id="4Ry-4s-2xD" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oqe-lm-pBD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xwn-S1-4kx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbw-uU-yOF">
+                                <rect key="frame" x="334" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="H9Q-zc-hGc"/>
+                                    <constraint firstAttribute="height" constant="30" id="N9Z-xw-B6I"/>
+                                </constraints>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="pressCancel" destination="4Ry-4s-2xD" eventType="touchUpInside" id="Ybn-Ig-sqH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KBo-xi-xdH" firstAttribute="trailing" secondItem="lbw-uU-yOF" secondAttribute="trailing" constant="50" id="1YA-9j-Vtf"/>
+                            <constraint firstItem="Xwn-S1-4kx" firstAttribute="top" secondItem="oqe-lm-pBD" secondAttribute="top" id="3jU-RU-f2w"/>
+                            <constraint firstItem="lbw-uU-yOF" firstAttribute="top" secondItem="KBo-xi-xdH" secondAttribute="top" constant="30" id="Ffi-GM-ShU"/>
+                            <constraint firstItem="Xwn-S1-4kx" firstAttribute="leading" secondItem="KBo-xi-xdH" secondAttribute="leading" id="N49-TT-DNR"/>
+                            <constraint firstAttribute="bottom" secondItem="Xwn-S1-4kx" secondAttribute="bottom" id="tDb-QL-Gdw"/>
+                            <constraint firstItem="Xwn-S1-4kx" firstAttribute="trailing" secondItem="KBo-xi-xdH" secondAttribute="trailing" id="viS-2J-jTC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KBo-xi-xdH"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Xwn-S1-4kx" id="ZBP-6v-iAG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzy-zr-SV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2118.840579710145" y="-250.44642857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z4m-OR-toa">
             <objects>
@@ -378,10 +433,12 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
+        <image name="cancel" width="128" height="128"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
+        <image name="map" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t0t-f0-dx7"/>
+        <segue reference="KeJ-JI-Jqu"/>
     </inferredMetricsTieBreakers>
 </document>

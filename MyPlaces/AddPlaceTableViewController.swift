@@ -66,13 +66,8 @@ class AddPlaceTableViewController: UITableViewController {
     
     func savePlace() {
        
-        var image: UIImage?
         
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = #imageLiteral(resourceName: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image : #imageLiteral(resourceName: "imagePlaceholder")
         let imageData = image?.pngData()
         
         let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData, rating: Double(ratingControl.rating))
@@ -114,6 +109,14 @@ class AddPlaceTableViewController: UITableViewController {
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" {
+            return
+        }
+        guard let dvc = segue.destination as? MapViewController else { return }
+        dvc.place = currentPlace
+    }
 }
 
 // MARK: - TextFieldDelegate
@@ -131,6 +134,7 @@ extension AddPlaceTableViewController: UITextFieldDelegate {
         }
     }
 }
+
 
 // MARK: - Work with image
 
