@@ -111,11 +111,12 @@ class AddPlaceTableViewController: UITableViewController {
     }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {
-            return
-        }
+        if segue.identifier != "showMap" { return }
         guard let dvc = segue.destination as? MapViewController else { return }
-        dvc.place = currentPlace
+        dvc.place.name = placeName.text!
+        dvc.place.location = placeLocation.text
+        dvc.place.imageData = placeImage.image?.pngData()
+        dvc.place.type = placeType.text
     }
 }
 
@@ -155,3 +156,5 @@ extension AddPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
         dismiss(animated: true)
     }
 }
+
+
