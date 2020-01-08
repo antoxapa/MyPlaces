@@ -111,12 +111,18 @@ class AddPlaceTableViewController: UITableViewController {
     }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" { return }
-        guard let dvc = segue.destination as? MapViewController else { return }
-        dvc.place.name = placeName.text!
-        dvc.place.location = placeLocation.text
-        dvc.place.imageData = placeImage.image?.pngData()
-        dvc.place.type = placeType.text
+        guard let identifier = segue.identifier, let mapDVC = segue.destination as? MapViewController else { return }
+        mapDVC.segueIdentifier = identifier
+        mapDVC.mapViewControllerDelegate = self
+        
+        if identifier == "showPlace" {
+        mapDVC.place.name = placeName.text!
+        mapDVC.place.location = placeLocation.text
+        mapDVC.place.imageData = placeImage.image?.pngData()
+        mapDVC.place.type = placeType.text
+        }
+    }
+    @IBAction func chooseAdress(_ sender: UIButton) {
     }
 }
 
@@ -155,6 +161,14 @@ extension AddPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
         imageIsChanged = true
         dismiss(animated: true)
     }
+}
+
+extension AddPlaceTableViewController: MapViewControllerDelegate {
+    func getAddress(_ address: String?) {
+        placeLocation.text = address
+    }
+    
+    
 }
 
 
